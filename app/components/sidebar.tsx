@@ -10,7 +10,7 @@ import AddIcon from "../icons/add.svg";
 import CloseIcon from "../icons/close.svg";
 import DeleteIcon from "../icons/delete.svg";
 import MaskIcon from "../icons/mask.svg";
-import PluginIcon from "../icons/plugin.svg";
+import ChatIcon from "../icons/chat.svg";
 import DragIcon from "../icons/drag.svg";
 
 import Locale from "../locales";
@@ -180,10 +180,13 @@ export function SideBar(props: { className?: string }) {
           shadow
         />
         <IconButton
-          icon={<PluginIcon />}
-          text={shouldNarrow ? undefined : Locale.Plugin.Name}
+          icon={<ChatIcon />}
+          text={shouldNarrow ? undefined : Locale.Home.NewChat}
           className={styles["sidebar-bar-button"]}
-          onClick={() => showToast(Locale.WIP)}
+          onClick={() => {
+            chatStore.newSession();
+            navigate(Path.Chat);
+          }}
           shadow
         />
       </div>
